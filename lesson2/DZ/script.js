@@ -28,6 +28,7 @@ class GoodsList {
             { title: "Чипсы", info: "Чипсы Lays Из печи, лисички в сметане, 85 г.", price: 55 } //img: "lays.jpg"
         ];
     }
+    /** метод подсчета всей стоимости в листе товаров */
     totalSum() {
         let total = 0;
         this.goods.forEach(good => {
@@ -49,15 +50,27 @@ class GoodsList {
 
     }
 }
-
+/** Класс для корзины с методами */
 class Basket {
+    totalSum() {
 
+    }
+    cleanBasket(){
+
+    }
 }
 
+/** Класс для елементов корзины */
 class BasketItem {
     constructor(good) {
         this.good = '';
-        count = '';
+        this.count = '';
+    }
+    addItem (){
+
+    }
+    removeItem() {
+
     }
 }
 
