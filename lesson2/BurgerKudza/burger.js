@@ -43,6 +43,10 @@ class Hamburger {
     getStuffing() {
         let list = ''
         this.stuffingArray.forEach(stuffing => { list += `<div>${stuffing.stuffing}</div>` })
+        let div= document.querySelector('#leftDiv')
+        let span = document.createElement('span')
+        span.innerHTML = list
+        div.appendChild(span)
         return list
     }
 
@@ -65,46 +69,86 @@ class Hamburger {
 
         return this.calories
     }
+    renderImage(){
+        let img = document.querySelectorAll('.burgerImg');
+        this.stuffingArray.forEach(stuffing => { 
+            switch (stuffing.dest) {
+              case 'topBurger':
+                img[0].src='img/'+stuffing.img;
+                break;
+              case 'saladBurger':
+                img[1].src='img/'+stuffing.img;
+                break;
+                case 'meatBurger':
+                img[2].src='img/'+stuffing.img;
+                break;  
+            }
+
+            
+        })
+    }
 }
 
 class Stuffing {
-    constructor(stuffing, price, callories) {
+    constructor(stuffing, price, callories, img='',dest='' ) {
         this.price = price;
         this.callories = callories;
         this.stuffing = stuffing;
-
+        this.img = img;
+        this.dest = dest;
+        this.creatBtn();     
     }
-
+    creatBtn() {
+            let div = document.getElementById('leftDiv')
+            let btn = document.createElement('button')
+            btn.dataset.name = this.stuffing
+            btn.innerText = this.stuffing
+            div.appendChild(btn)
+        }
 }
 
 class Toppings {
-    constructor(toppings, price, callories) {
+    constructor(toppings, price, callories, img='',dest='' ) {
         this.price = price;
         this.callories = callories;
         this.toppings = toppings;
+        this.img = img;
+        this.dest = dest
+        this.creatBtn();
     }
+    creatBtn() {
+            let div = document.getElementById('leftDiv')
+            let btn = document.createElement('button')
+            btn.dataset.name = this.toppings
+            btn.innerText = this.toppings
+            btn.addEventListener('click', () => { Hamburger.addTopping('toppings'+this.toppings) });//проблема - ругается, что у гамбургера нет такой функции
+            div.appendChild(btn)
+        }
 }
 
 const init = () => {
 
     const newHamburger = new Hamburger('big','123')
-    const stuffingCheese = new Stuffing('chees','10','20')
-    const stuffingSalad = new Stuffing('salad','20','5')
-    const stuffingPotatoes = new Stuffing('potatoes','15','10')
-    const toppingsSeasoning = new Toppings('seasoning','15','0')
-    const toppingsMayonnaise = new Toppings('mayonnaise','20','5')
 
-    const btnCal = document.querySelector('#btnCal')
-    btnCal.addEventListener('click', () => { newHamburger.calculatePrice() });
+    const stuffingCheese = new Stuffing('Chees','10','20','20.png')
+    const stuffingSalad = new Stuffing('Salad','20','5','20.png','saladBurger')
+    const stuffingPotatoes = new Stuffing('Potatoes','15','10','20.png')
+    const toppingsSeasoning = new Toppings('Seasoning','15','0','11.png','topBurger')
+    const toppingsMayonnaise = new Toppings('Mayonnaise','20','5','33.png','meatBurger')
+
+    // const btnCal = document.querySelector('#btnCal')
+    // btnCal.addEventListener('click', () => { newHamburger.calculatePrice() });
+
     newHamburger.getSize();
     newHamburger.addStuffing(stuffingCheese)
     newHamburger.addStuffing(stuffingSalad)
-    newHamburger.addTopping(toppingsMayonnaise)
-    //console.log(newHamburger.calculatePrice())
+    newHamburger.addTopping(toppingsSeasoning)
+    
 
     console.log(newHamburger)
     console.log(newHamburger.getStuffing())
-    console.log(newHamburger.getToppings())
+    //console.log(newHamburger.getToppings())
+    newHamburger.renderImage()
 
 }
 

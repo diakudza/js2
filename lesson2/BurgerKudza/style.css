@@ -1,0 +1,32 @@
+body {
+	color: white;
+	background: black;
+}
+#content{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+
+
+#leftDiv {
+	width: 40%;
+}
+
+#divBurger {
+	width: 40%;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+
+
+#divBurger img {
+	height: 100px;
+	width: 500px;
+}
+
