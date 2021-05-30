@@ -73,18 +73,27 @@ class Hamburger {
         let img = document.querySelectorAll('.burgerImg');
         this.stuffingArray.forEach(stuffing => { 
             switch (stuffing.dest) {
-              case 'topBurger':
-                img[0].src='img/'+stuffing.img;
-                break;
+
               case 'saladBurger':
                 img[1].src='img/'+stuffing.img;
                 break;
-                case 'meatBurger':
-                img[2].src='img/'+stuffing.img;
-                break;  
+
             }
 
             
+        })
+        this.toppingArray.forEach(topping => {
+            switch (topping.dest) {
+                case 'topBurger':
+                    img[0].src='img/'+topping.img;
+                    break;
+
+                case 'meatBurger':
+                    img[2].src='img/'+topping.img;
+                    break;
+            }
+
+
         })
     }
 }
@@ -99,10 +108,11 @@ class Stuffing {
         this.creatBtn();     
     }
     creatBtn() {
-            let div = document.getElementById('leftDiv')
-            let btn = document.createElement('button')
+            const div = document.getElementById('leftDiv')
+            const btn = document.createElement('button')
             btn.dataset.name = this.stuffing
             btn.innerText = this.stuffing
+            btn.addEventListener('click', () => { newHamburger.addStuffing('stuffing' + this.stuffing)});
             div.appendChild(btn)
         }
 }
@@ -117,11 +127,11 @@ class Toppings {
         this.creatBtn();
     }
     creatBtn() {
-            let div = document.getElementById('leftDiv')
-            let btn = document.createElement('button')
+            const div = document.getElementById('leftDiv')
+            const btn = document.createElement('button')
             btn.dataset.name = this.toppings
             btn.innerText = this.toppings
-            btn.addEventListener('click', () => { Hamburger.addTopping('toppings'+this.toppings) });//проблема - ругается, что у гамбургера нет такой функции
+            btn.addEventListener('click', () => { newHamburger.addTopping('toppings'+this.toppings) });//проблема - ругается, что у гамбургера нет такой функции
             div.appendChild(btn)
         }
 }
@@ -130,7 +140,7 @@ const init = () => {
 
     const newHamburger = new Hamburger('big','123')
 
-    const stuffingCheese = new Stuffing('Chees','10','20','20.png')
+    const stuffingCheese = new Stuffing('Chees','10','20')
     const stuffingSalad = new Stuffing('Salad','20','5','20.png','saladBurger')
     const stuffingPotatoes = new Stuffing('Potatoes','15','10','20.png')
     const toppingsSeasoning = new Toppings('Seasoning','15','0','11.png','topBurger')
@@ -140,9 +150,10 @@ const init = () => {
     // btnCal.addEventListener('click', () => { newHamburger.calculatePrice() });
 
     newHamburger.getSize();
-    newHamburger.addStuffing(stuffingCheese)
+    //newHamburger.addStuffing(stuffingCheese)
     newHamburger.addStuffing(stuffingSalad)
     newHamburger.addTopping(toppingsSeasoning)
+    newHamburger.addTopping(toppingsMayonnaise)
     
 
     console.log(newHamburger)

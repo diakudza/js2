@@ -12,6 +12,8 @@ body {
 
 #leftDiv {
 	width: 40%;
+	display: flex;
+	flex-direction: column;
 }
 
 #divBurger {
@@ -26,7 +28,7 @@ body {
 
 
 #divBurger img {
-	height: 100px;
-	width: 500px;
+
+	width: 460px;
 }
 
