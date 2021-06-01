@@ -12,12 +12,14 @@ class Hamburger {
         this.toppingArray.push(topping);
         this.calculateCalories()
         this.calculatePrice()
+        this.renderImage()
     }
 
     addStuffing (stuffing) {
         this.stuffingArray.push(stuffing);
         this.calculateCalories()
         this.calculatePrice()
+        this.renderImage()
     }
     removeTopping (topping) {
         // Убрать добавку
@@ -110,9 +112,10 @@ class Stuffing {
     creatBtn() {
             const div = document.getElementById('leftDiv')
             const btn = document.createElement('button')
-            btn.dataset.name = this.stuffing
+            btn.dataset.name = 'stuffing' + this.stuffing
+
             btn.innerText = this.stuffing
-            btn.addEventListener('click', () => { newHamburger.addStuffing('stuffing' + this.stuffing)});
+            btn.addEventListener('click', (e) => { newHamburger.addStuffing(e.target.dataset.name)});
             div.appendChild(btn)
         }
 }
@@ -129,18 +132,19 @@ class Toppings {
     creatBtn() {
             const div = document.getElementById('leftDiv')
             const btn = document.createElement('button')
-            btn.dataset.name = this.toppings
+            btn.dataset.name = 'toppings' + this.toppings
             btn.innerText = this.toppings
-            btn.addEventListener('click', () => { newHamburger.addTopping('toppings'+this.toppings) });//проблема - ругается, что у гамбургера нет такой функции
+            btn.addEventListener('click', () => { newHamburger.addTopping(`toppings${this.toppings}`) });//проблема - ругается, что у гамбургера нет такой функции
             div.appendChild(btn)
         }
 }
 
+const newHamburger = new Hamburger('big','123')
 const init = () => {
 
-    const newHamburger = new Hamburger('big','123')
 
-    const stuffingCheese = new Stuffing('Chees','10','20')
+
+    const stuffingCheese = new Stuffing('Cheese','10','20')
     const stuffingSalad = new Stuffing('Salad','20','5','20.png','saladBurger')
     const stuffingPotatoes = new Stuffing('Potatoes','15','10','20.png')
     const toppingsSeasoning = new Toppings('Seasoning','15','0','11.png','topBurger')
@@ -150,10 +154,10 @@ const init = () => {
     // btnCal.addEventListener('click', () => { newHamburger.calculatePrice() });
 
     newHamburger.getSize();
-    //newHamburger.addStuffing(stuffingCheese)
-    newHamburger.addStuffing(stuffingSalad)
-    newHamburger.addTopping(toppingsSeasoning)
-    newHamburger.addTopping(toppingsMayonnaise)
+    newHamburger.addStuffing(stuffingCheese)
+    //newHamburger.addStuffing(stuffingSalad)
+    //newHamburger.addTopping(toppingsSeasoning)
+    //newHamburger.addTopping(toppingsMayonnaise)
     
 
     console.log(newHamburger)
