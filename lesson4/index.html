@@ -39,10 +39,10 @@
     }
 
     function drawRed (id,reg){
-        if(reg == false){
+        if(!reg){
             document.getElementById(id).classList.remove('red')
             document.getElementById(id).classList.add('red')
-
+           // document.getElementById('std').innerHTML = ''
         }else {
             document.getElementById('std').innerHTML += `<br>${id} : ${document.getElementById(id).value}`
         }
@@ -55,13 +55,13 @@
 
         const nameReg = /^[a-zA-Zа-яёА-ЯЁ]+$/u
         const mailReg = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/
-        const telReg = /^\+?[7][\(]?\d{3}\)?\d{7}$/
+        const telReg = /^\+?[7][\(]?\d{3}\)?\d{3}?[-]?\d{4}$/
 
         drawRed('name', nameReg.test(name))
         drawRed('tel', telReg.test(tel))
         drawRed('mail', mailReg.test(mail))
     }
-    //+7(929)1777063
+    //+7(929)177-7063
         //diaku@gmail.com
     }
 
