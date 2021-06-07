@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #firstText {
+            height: 100px;
+            width: 200px;
+        }
+        .red {  color: red;}
+    </style>
+</head>
+<body>
+<div style="border: 1px solid black; padding: 10px; margin: 0 0 10px;">
+<textarea id="firstText">Irina said to Maksim, 'You need don't do this exercise' aren't, isn't</textarea>
+<button id="doFirst" type="button" >Поменять</button>
+</div>
+
+<div id="two" style="border: 1px solid black; padding: 10px;">
+    <input type="text" placeholder="name" id="name">
+    <input type="text" placeholder="+7(000)0000000" id="tel">
+    <input type="text" placeholder="e-mail" id="mail">
+    <input type="text" placeholder="text" id="text">
+    <button id="doSecond" type="button" >Проверить и отправить</button>
+    <p id="std"></p>
+</div>
+</body>
+<script>
+    const init = () => {
+    const btnFirst = document.getElementById('doFirst').addEventListener('click', () =>{fixText() })
+    const btnSecond = document.getElementById('doSecond').addEventListener('click', () =>{checkForm() })
+
+        function fixText() {
+        const str = document.getElementById('firstText').value
+        const regExp = /[^n]'/gi
+        document.getElementById('firstText').value= str.replace(regExp,'\"')
+        console.log(str.replace(regExp,'\"'))
+    }
+
+    function drawRed (id,reg){
+        if(!reg){
+            document.getElementById(id).classList.remove('red')
+            document.getElementById(id).classList.add('red')
+           // document.getElementById('std').innerHTML = ''
+        }else {
+            document.getElementById('std').innerHTML += `<br>${id} : ${document.getElementById(id).value}`
+        }
+    }
+
+    function checkForm (){
+        const name = document.getElementById('name').value
+        const tel = document.getElementById('tel').value
+        const mail = document.getElementById('mail').value
+
+        const nameReg = /^[a-zA-Zа-яёА-ЯЁ]+$/u
+        const mailReg = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/
+        const telReg = /^\+?[7][\(]?\d{3}\)?\d{3}?[-]?\d{4}$/
+
+        drawRed('name', nameReg.test(name))
+        drawRed('tel', telReg.test(tel))
+        drawRed('mail', mailReg.test(mail))
+    }
+    //+7(929)177-7063
+        //diaku@gmail.com
+    }
+
+    window.onload = init;
+
+</script>
+</html>
