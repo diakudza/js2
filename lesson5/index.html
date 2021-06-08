@@ -4,16 +4,27 @@
     <title>eShop</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
+
   </head>
   <body>
-    <main>
-      <header id="head">
-        <button class="cart-button" type="button"></button><div id="listOfCart"></div>
+    <div id="app">
+        <header id="head">
+        <input type="text" class="goods-search" />
+        <button class="search-button" type="button">Искать</button>
       </header>
       <main>
-        <div class="goods-list"></div>
+        <div class="goods-list">
+            <div class="good-item" v-for="good in filteredGoods">
+              <h3>{{good.product_name}}</h3>
+              <p>{{good.price}}</p>
+            </div>
+        </div>
+        <div class="basket-list" v-if="filteredGoods !== '0' ">
+            <p v-for=""></p>
+        </div>
       </main>
-    </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
