@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>eShop</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div id="app">
+        <header id="head">
+            <input type="text" class="goods-search" v-model="searchLine" />
+            <button class="search-button" type="button" @click="FilterGoods()">Искать</button>
+            <button class="clear-button" type="button" @click="ClearFilterGoods()">Очистить</button>
+        </header>
+        <main>
+            <div class="goods-list">
+                
+                    <div class="good-item" v-if="!isVisibleGoods&&!noFound" v-for="filteredgood in filteredGoods">
+                        <h3>{{filteredgood.product_name}}</h3>
+                        <p>{{filteredgood.price}}</p>
+                    </div>
+                    <div class="good-item" v-if="isVisibleGoods&&!noFound" v-for="good in goods">
+                        <h3>{{good.product_name}}</h3>
+                        <p>{{good.price}}</p>
+                    </div>
+                
+                <p v-if="noFound">Не найдено</p>
+            </div>
+            <div class="basket-list" v-if="isVisibleCart">
+                <p></p>
+                <p></p>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="script.js"></script>
-  </head>
-  <body>
-    <main>
-      <header id="head">
-        <button class="cart-button" type="button"></button><div id="listOfCart"></div>
-      </header>
-      <main>
-        <div class="goods-list"></div>
-      </main>
-    </main>
-  </body>
+</body>
+
 </html>
