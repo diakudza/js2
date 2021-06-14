@@ -161,12 +161,14 @@ const app = new Vue({
 
         RemoveFromBasket() {
             this.basket.splice(this.basket.find(n => n.id_product == event.target.attributes.idatt.value),1)
-            //console.log(event.target.attributes.idatt.value)
             this.basketSum -= this.goods.find(n => n.id_product == event.target.attributes.idatt.value).price
-            console.log(this.basketSum)
-            console.log(this.basket)
+            console.log('basketSum ',this.basketSum)
+            console.log('basket ',this.basket)
             if(this.basket.length == 0) {
                 this.isVisibleCart = false
+                this.basketSum = 0
+                console.log('basketSum ',this.basketSum)
+
             }
         },
 

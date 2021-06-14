@@ -30,7 +30,7 @@ body {
 .goods-search{
     display: none;
 }
-.findbar:hover .goods-search, .clear-button {
+.findbar:hover .goods-search, .findbar:hover .clear-button {
     display: block;
 }
 header {
@@ -39,7 +39,6 @@ header {
 }
 #listOfCart {
     display: flex;
-
 }
 
 .basket-item{
