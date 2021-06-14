@@ -19,7 +19,7 @@ Vue.component('goods-item',{
         <div class="flex-column">
             <h3>{{goodProp.product_name}}</h3>
             <p>{{goodProp.price}} руб.</p>
-            <button class="goods-list__button" @click="AddToBasket()" v-bind:idAtt=goodProp.id_product>Добавить в корзину</button>
+            <button class="goods-list__button" @click="AddToBasket()" v-bind:idAtt=goodProp.id_product>&#128722;</button>
         </div>
     </div>`,
     methods: {
@@ -33,12 +33,18 @@ Vue.component('basket',{
     props: ['basket','basketSum'],
     template: `
     <div class="basket">
-        <h3>Корзина</h3>
+        <h3>Корзина</h3><button class="basket-button__clean" @click="СleanBasket()">Очистить корзину &#128937;</button>
         <div class="basket-list">
          <basket-item v-for="goodEntity in basket" :goodProp="goodEntity" ></basket-item>
         </div>
         <p>Сумма вашего заказа: {{basketSum}} руб.</p>
-    </div>`
+        
+    </div>`,
+    methods: {
+        СleanBasket: function () {
+            this.$root.СleanBasket();
+        }
+    }
 })
 
 Vue.component('basket-item',{
@@ -46,10 +52,9 @@ Vue.component('basket-item',{
     template: `
     <div class="basket-item">
         <img class="basket-item__img">
-        <div class="flex-column">
-            <h3>{{goodProp.product_name}}</h3>
-            <button class="basket__button" @click="RemoveFromBasket()" v-bind:idAtt=goodProp.id_product>Удалить</button>
-            </div>
+        <h3>{{goodProp.product_name}}</h3>
+        <button class="basket-button" @click="RemoveFromBasket()" v-bind:idAtt=goodProp.id_product>&#128937;</button>
+            
     </div>`,
     methods: {
         RemoveFromBasket: function () {
@@ -64,8 +69,8 @@ Vue.component('findBar',{
     <div>
         <div class="findbar">
             <input type="text" class="goods-search" v-bind:value="searchLine" v-on:input="$emit('input', $event.target.value)"/>
-            <button class="search-button" type="button" @click="FilterGoods()" title="Найти">&#128270;</button>
             <button class="clear-button" type="button" @click="ClearFilterGoods()" title="Очистить">&#128937;</button>
+            <button class="search-button" type="button" @click="FilterGoods()" title="Найти">&#128270;</button>
         </div>
     </div>`,
     methods: {
@@ -83,7 +88,7 @@ Vue.component('no-found',{
     <div class="back">
         <div class="noFound">
             <h3>Нет ничего похожего</h3>
-            <button class="clear-button" type="button" @click="ClearFilterGoods()" title="Очистить">Закрыть</button>
+            <button type="button" class="cart-button" @click="ClearFilterGoods()" title="Очистить">Закрыть</button>
         </div>
     </div>`,
     methods: {
@@ -179,6 +184,11 @@ const app = new Vue({
             this.noFound = false
 
         },
+        СleanBasket(){
+            this.basket = []
+            this.basketSum = 0
+            this.isVisibleCart = false
+        }
 },
 async mounted() {
     await this.getProducts()

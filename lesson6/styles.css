@@ -1,5 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 body {
 	background: #afd780a8;
+    margin: 10px;
 }
 
 .content {
@@ -29,6 +34,13 @@ body {
 }
 .goods-search{
     display: none;
+    outline:  none !important;
+    border: 1px solid #cae4ab;
+    border-radius: 4px;
+}
+.goods-search:focus {
+    border: 1px solid #cae4ab;
+    box-shadow: 0px 0px 4px #35ac2dbd;
 }
 .findbar:hover .goods-search, .findbar:hover .clear-button {
     display: block;
@@ -36,9 +48,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-}
-#listOfCart {
-    display: flex;
+    margin: 10px;
 }
 
 .basket-item{
@@ -57,12 +67,11 @@ header {
 
 .basket{
     display: flex;
-    width: 100%;
     background: white;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 5px;
+    padding: 20px 5px;
     border-radius: 10px;
     margin: 10px 0;
 }
@@ -76,23 +85,29 @@ header {
     margin: 10px 0;
 }
 
-.basket__button {
+.basket-button {
+    top: -36px;
+    right: -73px;
     background: transparent;
-    font-size: 20px;
+    font-size: 14px;
+    border: none;
+    position: relative;
+}
+.basket-button__clean {
+    background: transparent;
+    font-size: 14px;
     border: none;
 }
 
 .goods-list__button {
     background: transparent;
     font-size: 20px;
-
+    border: none;
 }
 .cart-button {
     background: transparent;
-    border: 1px solid wheat;
-    border-radius: 5px;
-    height: 40px;
-    box-shadow: 1px 1px 2px black;
+    border: none;
+
 }
 
 .goods {
@@ -101,6 +116,7 @@ header {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    padding: 20px 0 0 0;
 }
 
 .goods-list {
@@ -119,6 +135,7 @@ header {
     background: white;
     border-radius: 5px; 
     width: 400px;
+    height: 200px;
     box-sizing: border-box;
     padding: 20px;
     margin: 10px 10px;
@@ -132,12 +149,14 @@ header {
 .flex-column {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
 }
 
 .goods-item__img {
 	width: 150px;
 	height: 100%;
-    margin: 0 15px 0 0;
+    margin: 0px 60px 0 0;
 }
 
 .basket-item__img {
