@@ -6,12 +6,32 @@ header {
 	margin: 0 0 10px 0;
 	background: white;
 	min-height: 50px;
+    /*width: fit-content;*/
 	display: flex;
 	align-items: center;
+    justify-content: flex-end;
 	padding: 0 5px;
 	border-radius: 10px;
+
 }
 
+#listOfCart {
+    display: flex;
+
+}
+
+.basket-list {
+    display: flex;
+    background: white;
+    padding: 0 5px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+.basket-list button {
+    background: transparent;
+    font-size: 30px;
+    border: none;
+}
 .cart-button {
     background: transparent;
     border: 1px solid wheat;
@@ -30,8 +50,9 @@ header {
     border-radius: 10px; 
 }
 
-.goods-item {
+.good-item {
 	display: flex;
+    flex-direction: column;
 	align-items: center;
     border: 1px solid wheat;
     background: white;
@@ -44,18 +65,18 @@ header {
 
 }
 
-.goods-item:hover {
+.good-item:hover {
 	
 	box-shadow: 1px 2px 5px #f5b3ee;
 }
 
 
-.goods-item > img {
+.good-item > img {
 	width: 150px;
 	height: 150px;
 }
 
-.goods-item-subtext {
+.good-item-subtext {
 display: flex;
 flex-direction: column;
 padding: 0 5px 0 0;
