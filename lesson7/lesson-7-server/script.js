@@ -52,10 +52,12 @@ app.post("/removeBasketItem", (req, res) => {
     } else {
       const cart = JSON.parse(data);
       const item = req.body;
-      console.log('cart', cart)
-      console.log('item', item)
-      cart.splice(cart.forEach(n => n.id_product == +item.id_product),1)
-      //console.log(cart.forEach(n => n.id_product == 003 ))
+      //console.log('cart', cart)
+      //console.log('item', item)
+      cart.forEach(n => { if (n.id_product == item.id_product) {
+           cart.splice(cart.indexOf(n),1);
+       } })
+
       fs.writeFile("cart.json", JSON.stringify(cart), (err) => {
         if (err) {
           res.send('{"result": 0}');

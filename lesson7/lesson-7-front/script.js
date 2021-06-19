@@ -159,7 +159,7 @@ Vue.component('findBar',{
     template: `
     <div>
         <div class="findbar">
-            <input type="text" class="goods-search" v-bind:value="searchLine" v-on:keydown.enter="FilterGoods" v-on:input="$emit('input', $event.target.value)"/>
+            <input type="text" class="goods-search" v-bind:value="value" v-on:keydown.enter="FilterGoods" v-on:input="$emit('input', $event.target.value)"/>
             <button class="clear-button" type="button" @click="ClearFilterGoods" title="Очистить">&#128937;</button>
             <button class="search-button" type="button" @click="FilterGoods"  title="Найти">&#128270;</button>
         </div>
@@ -240,17 +240,16 @@ const app = new Vue({
                 this.goods.forEach( good => {
 
                 if (this.searchLine.toLowerCase() === good.product_name.toLowerCase()) {
-                    this.filteredGoods.push(good)
-                    this.noFound = false;
-                    console.log('фильтер ' + this.filteredGoods)
-                    console.log('Есть ' + this.searchLine)
-                    return
+                        this.filteredGoods.push(good)
+                        this.noFound = false;
 
-                } else {
-                    this.noFound = true;
-                    this.isVisibleGoods = true
-                    return
-                }
+                    } else if (this.filteredGoods.length < 1){
+                        console.log('not found')
+                       this.noFound = true;
+                      this.isVisibleGoods = true
+
+                    }
+
             })
 
         }},
