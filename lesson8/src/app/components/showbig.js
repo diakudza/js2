@@ -1,4 +1,5 @@
-Vue.component('showbig',{
+export default{
+    name:'showbig',
     props: ['src'],
     template: `
     <div class="showbig" @click="this.$parent.hideBig">
@@ -6,11 +7,4 @@ Vue.component('showbig',{
         <img :src="src" >
         </div>                
     </div>`,
-})
-
-<template>
-	
-</template>
-<script>
-	
-</script>
+}

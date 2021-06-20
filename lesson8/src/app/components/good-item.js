@@ -1,4 +1,5 @@
-Vue.component('goods-item',{
+export default {
+    name: 'goods-item',
     props: ['goodProp'],
     data() {
         return {
@@ -45,11 +46,4 @@ Vue.component('goods-item',{
             this.$root.getProducts()
         }
     }
-})
-
-<template>
-	
-</template>
-<script>
-	
-</script>
+}

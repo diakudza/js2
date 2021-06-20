@@ -1,6 +1,12 @@
-Vue.component('basket-item',{
+export default {
+    name:'basket-item',
     props: ['goodProp'],
     template: `
+    <div class="basket-item">
+        <img class="basket-item__img" :src="goodProp.img">
+        <h3>{{goodProp.product_name}}</h3>
+        <button class="basket-button" @click="RemoveFromBasket" v-bind:idAtt=goodProp.id_product>&#128937;</button>
+   </div>
     `,
     methods: {
         async RemoveFromBasket() {
@@ -21,16 +27,4 @@ Vue.component('basket-item',{
         },
 
     }
-})
-
-
-<template>
-	<div class="basket-item">
-        <img class="basket-item__img" :src="goodProp.img">
-        <h3>{{goodProp.product_name}}</h3>
-        <button class="basket-button" @click="RemoveFromBasket" v-bind:idAtt=goodProp.id_product>&#128937;</button>
-   </div>
-</template>
-<script>
-	
-</script>
+}
