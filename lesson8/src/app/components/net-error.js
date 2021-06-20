@@ -1,5 +1,4 @@
-export default {
-    name:'net-error',
+export default Vue.component('net-error',{
     template: `
     <div class="back">
         <div class="noFound">
@@ -8,4 +7,4 @@ export default {
         </div>
     </div>
 `
-}
+})

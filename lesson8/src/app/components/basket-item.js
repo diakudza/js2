@@ -1,5 +1,6 @@
-export default {
-    name:'basket-item',
+const API_URL = "http://localhost:3000";
+
+export default Vue.component('basket-item',{
     props: ['goodProp'],
     template: `
     <div class="basket-item">
@@ -27,4 +28,4 @@ export default {
         },
 
     }
-}
+})

@@ -1,5 +1,6 @@
-export default {
-    name: 'goods-item',
+const API_URL = "http://localhost:3000";
+
+export default Vue.component('goods-item',{
     props: ['goodProp'],
     data() {
         return {
@@ -46,4 +47,4 @@ export default {
             this.$root.getProducts()
         }
     }
-}
+})

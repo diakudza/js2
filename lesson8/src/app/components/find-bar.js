@@ -1,7 +1,4 @@
-export default {
-
-
-    name: 'find-bar',
+export default Vue.component('find-bar',{
     props: ['value'],
     template: `
     <div>
@@ -21,5 +18,5 @@ export default {
             }
         }
 
-}
+})
 

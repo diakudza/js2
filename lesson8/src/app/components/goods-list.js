@@ -1,6 +1,16 @@
-export default {
-    name:'goods-list',
+import goodItem from './good-item.js';
+
+// export default {
+//     components: {
+//         goodItem
+//     }
+// }
+
+export default Vue.component('goods-list',{
     props: ['goods'],
+    components: {
+        'good-item': goodItem,
+    },
     template: `
     <div class="goods" >
         <h3>Список товаров</h3>
@@ -9,4 +19,5 @@ export default {
         </div>
     </div>
     `
-}
+})
+

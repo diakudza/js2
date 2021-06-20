@@ -1,5 +1,4 @@
-export default{
-    name:'showbig',
+export default Vue.component('showbig',{
     props: ['src'],
     template: `
     <div class="showbig" @click="this.$parent.hideBig">
@@ -7,4 +6,4 @@ export default{
         <img :src="src" >
         </div>                
     </div>`,
-}
+})

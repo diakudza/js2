@@ -1,5 +1,4 @@
-export default {
-    name: app,
+export default Vue.component('app',{
     el: '#app',
     data: {
         goods: [],
@@ -68,4 +67,4 @@ export default {
             await this.getProducts()
             await this.$refs.basket.getCart()
             }
-}
+})

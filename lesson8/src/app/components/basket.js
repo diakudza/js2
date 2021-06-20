@@ -1,5 +1,8 @@
-export default {
-    name: 'basket',
+const API_URL = "http://localhost:3000";
+
+import basketItem from './basket-item.js';
+
+export default Vue.component('basket',{
     //props: ['basket','isVisibleCart'],
     data() {
         return {
@@ -54,4 +57,4 @@ export default {
             }
         },
     }
-}
+})

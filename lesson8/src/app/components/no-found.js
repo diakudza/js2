@@ -1,5 +1,4 @@
-export default {
-    name:'no-found',
+export default Vue.component('no-found',{
     template: `
     <div class="back">
         <div class="noFound">
@@ -12,4 +11,4 @@ export default {
             this.$root.ClearFilterGoods();
         }
     }
-}
+})
