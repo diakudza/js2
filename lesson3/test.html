@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    const API_URL = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
+    let mass = {
+        goods: [],
+
+        async fetchGoods() {
+            const responce = await fetch(`${API_URL}/addReview.json`);
+            if (responce.ok) {
+                const catalogItems = await responce.json();
+                this.goods = catalogItems;
+                return this.goods.userMessage
+            } else {
+                alert("Ошибка при соединении с сервером");
+            }
+        }
+    }
+    const init = async () => {
+        console.log(await mass.fetchGoods());
+    }
+
+    window.onload = init
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>eShop</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../src/style/styles.css" />
+</head>
+
+<body>
+    <div id="app">
+
+        <net-error v-if="netError"></net-error>
+
+        <div class="content" v-if="!netError">
+            <header>
+                <img src="img/logo.png" width="70" height="70">
+                <find-bar v-model="searchLine"></find-bar>
+            </header>
+            <no-found v-if="noFound"></no-found>
+            <goods-list :goods="filteredGoods" v-if="isVisibleGoods"></goods-list>
+            <basket  ref="basket" v-show="isVisibleCart"></basket>
+        </div>
+
+    </div>
+     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<!--    <script src="../app/vue.js"></script>-->
+    <script src="../../dist/script.js"></script>
+</body>
+
+</html>
