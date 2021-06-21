@@ -1,7 +1,6 @@
 {
-  "name": "lesson-7",
+  "name": "lesson-8",
   "version": "1.0.0",
-  "description": "",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +11,10 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "moment": "^2.29.1",
-    "node-static": "^0.7.11"
-  }
+    "node-static": "^0.7.11",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "devDependencies": {},
+  "description": ""
 }
